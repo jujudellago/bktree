@@ -6,7 +6,7 @@ class BKTreeBuildingWhiteBoxTest < Test::Unit::TestCase
   attr_reader :tree
 
   def setup
-    @tree = BK::Tree.new
+    @tree = BK::Tree.new(BK::LevenshteinDistancer.new)
   end
 
   def test_should_build_root

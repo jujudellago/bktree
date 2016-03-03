@@ -4,7 +4,7 @@ require 'stringio'
 
 class BKTreeImportAndExportTest < Test::Unit::TestCase
   def test_should_give_correct_results_after_exporting_and_reimporting
-    tree = BK::Tree.new
+    tree = BK::Tree.new(BK::LevenshteinDistancer.new)
     terms = %w[
       lorem ipsum dolor sit amet consectetuer adipiscing elit donec eget lectus vivamus nec
       odio non ipsum adipiscing ornare etiam sapien

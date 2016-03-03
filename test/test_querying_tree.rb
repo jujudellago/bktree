@@ -3,7 +3,7 @@ require 'bk'
 
 class BKTreeQueryAccuracyTest < Test::Unit::TestCase
   def test_should_match_the_results_of_a_linear_scan
-    tree = BK::Tree.new
+    tree = BK::Tree.new(BK::LevenshteinDistancer.new)
     terms = %w[
       lorem ipsum dolor sit amet consectetuer adipiscing elit donec eget lectus vivamus nec
       odio non ipsum adipiscing ornare etiam sapien
@@ -46,7 +46,7 @@ class BKTreeSearchSpaceTest < Test::Unit::TestCase
   end
 
   def test_should_compare_only_necessary_nodes
-    tree = BK::Tree.new
+    tree = BK::Tree.new(BK::LevenshteinDistancer.new)
     terms = %w[
       infighting
       birded

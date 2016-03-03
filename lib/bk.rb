@@ -11,6 +11,14 @@ module BK
       Text::Levenshtein.distance(a, b)
     end
   end
+  
+  class HammingDistance
+    def call(a,b)
+      ai=a.to_i
+      bi=b.to_i
+      (ai^bi).to_s(2).count("1")
+    end
+  end
 
   class Node
     attr_reader :term, :children
@@ -45,7 +53,7 @@ module BK
   end
 
   class Tree
-    def initialize(distancer = LevenshteinDistancer.new)
+    def initialize(distancer = HammingDistance.new)
       @root = nil
       @distancer = distancer
     end
@@ -67,9 +75,17 @@ module BK
     def export(stream)
       stream.write YAML.dump(self)
     end
+    def export_content
+#      YAML.dump(self)
+      Marshal.dump(self)
+    end
 
     def self.import(stream)
       YAML.load(stream.read)
     end
+    def self.import_content(content)      
+#       YAML.load(content)
+       Marshal.load(content)
+     end
   end
 end

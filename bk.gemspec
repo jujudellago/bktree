@@ -18,4 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency("text")
   s.add_development_dependency("rake")
+  s.add_development_dependency("chronic_duration")
+  s.add_development_dependency("test-unit")
+  s.add_development_dependency("minitest")
 end
